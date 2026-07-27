@@ -7,6 +7,8 @@ import {
   FaDownload,
 } from "react-icons/fa";
 
+import profileImage from "../../assets/images/panthidai.jpeg";
+
 
 
 function Hero() {
@@ -142,7 +144,7 @@ function Hero() {
               <div className="absolute -inset-4 rounded-full border border-white/10" />
 
               <img
-                src="/images/profile.png"
+                src={profileImage}
                 alt="Roshan Panthi"
                 className="relative h-[330px] w-[330px] md:h-[480px] md:w-[480px] rounded-full object-cover border border-white/10 shadow-[0_0_80px_rgba(255,255,255,0.08)]"
               />

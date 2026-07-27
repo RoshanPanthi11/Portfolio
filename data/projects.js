@@ -1,60 +1,82 @@
 const projects = [
   {
     id: 1,
-    title: "Medical E-Commerce Website",
+    title: "Personal Portfolio Website",
     description:
-      "Developed a responsive medical e-commerce platform during my frontend internship. Implemented reusable components, shopping cart functionality, Google authentication, and REST API integration.",
+      "Designed and developed a modern single-page portfolio website with smooth animations, responsive layouts, and interactive sections to showcase my skills, experience, and projects.",
     technologies: [
       "React",
-      "Next.js",
+      "Vite",
       "Tailwind CSS",
-      "REST API",
-      "Firebase",
+      "Framer Motion",
+      "Responsive Design",
     ],
-    github: "https://github.com/yourusername/medical-ecommerce",
+    github: "https://github.com/RoshanPanthi11/Portfolio",
   },
 
   {
     id: 2,
-    title: "Chat Application",
+    title: "Expense Tracker Application",
     description:
-      "Built a real-time chat application using ASP.NET Core and SignalR, enabling instant messaging with a responsive and user-friendly interface.",
+      "Developed an expense tracking application that allows users to manage income and expenses, visualize financial data, and perform CRUD operations through a user-friendly interface.",
     technologies: [
-      "ASP.NET Core",
-      "SignalR",
-      "SQL Server",
-      "Bootstrap",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Chart.js",
+      "REST API",
     ],
-    github: "https://github.com/yourusername/chat-app",
+    github: "https://github.com/RoshanPanthi11/ExpensesTracker",
   },
 
   {
     id: 3,
-    title: "Student Management System",
+    title: "Webshop Frontend",
     description:
-      "Developed a web-based CRUD application for managing student records with SQL Server integration and Entity Framework Core.",
+      "Built a modern e-commerce frontend application with reusable React components, dynamic product rendering, category browsing, and shopping cart functionality with a responsive user interface.",
     technologies: [
-      "ASP.NET Core MVC",
-      "Entity Framework Core",
-      "SQL Server",
-      "Bootstrap",
+      "React",
+      "Vite",
+      "JavaScript",
+      "Tailwind CSS",
+      "REST API",
     ],
-    github: "https://github.com/yourusername/student-management-system",
+    github: "https://github.com/RoshanPanthi11/WebshopFrontend",
   },
 
   {
     id: 4,
-    title: "Online Voting System",
+    title: "Weather Application",
     description:
-      "Final year BSc CSIT project that provides a secure online voting platform with voter authentication, election management, and result generation.",
+      "Developed a responsive weather application that fetches real-time weather data using external APIs. Implemented city-based search, dynamic weather updates, and an intuitive user interface.",
     technologies: [
-      "PHP",
-      "MySQL",
-      "Bootstrap",
+      "React",
+      "Vite",
       "JavaScript",
+      "OpenWeather API",
+      "CSS",
     ],
-    github: "https://github.com/yourusername/online-voting-system",
+    github: "https://github.com/RoshanPanthi11/WeatherApp",
   },
+
+  {
+    id: 5,
+    title: "Real-time Chat Application (Socket.io)",
+    description:
+      "Built a full-stack real-time chat application using Socket.io for instant communication. Implemented real-time messaging, client-server event handling, user authentication, and persistent chat data storage.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "Socket.io",
+      "MongoDB",
+     
+    ],
+    github: "https://github.com/RoshanPanthi11/CHAT-WEBSOCKET",
+  },
+
+  
 ];
 
 export default projects;

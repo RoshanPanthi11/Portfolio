@@ -42,7 +42,7 @@ function Contact() {
 
     <section
       id="contact"
-      className="relative overflow-hidden bg-[#09090B] pt-32 pb-16 text-white"
+      className="relative overflow-hidden bg-[#09090B] pt-16 pb-16 text-white"
     >
 
 
