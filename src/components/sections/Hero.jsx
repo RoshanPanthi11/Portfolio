@@ -32,6 +32,12 @@ const container = {
   show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
+// Details start once the intro (badge + name) has animated in
+const detailsContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
+};
+
 const item = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
@@ -76,9 +82,10 @@ function Hero() {
         <div className="bg-grid absolute inset-0" />
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-6 lg:grid-cols-[1.15fr_1fr] lg:px-10">
-        {/* LEFT */}
-        <motion.div variants={container} initial="hidden" animate="show">
+      {/* Mobile order: intro → photo → details. Desktop: text left, photo right. */}
+      <div className="relative mx-auto grid w-full max-w-7xl px-6 lg:grid-cols-[1.15fr_1fr] lg:gap-x-16 lg:px-10">
+        {/* INTRO */}
+        <motion.div variants={container} initial="hidden" animate="show" className="lg:col-start-1 lg:row-start-1 lg:self-end">
           <motion.div
             variants={item}
             className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-4 py-1.5 text-sm text-emerald-300"
@@ -98,6 +105,59 @@ function Hero() {
             <br />
             <span className="text-zinc-400">Panthi.</span>
           </motion.h1>
+        </motion.div>
+
+        {/* PHOTO */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mx-auto mb-2 mt-10 w-full max-w-[240px] sm:max-w-[340px] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mb-0 lg:mt-0 lg:max-w-[460px] lg:self-center"
+        >
+          <div className="relative aspect-square">
+            {/* Spinning gradient ring */}
+            <div
+              aria-hidden
+              className="absolute -inset-[3px] animate-spin-slow rounded-full bg-[conic-gradient(from_0deg,var(--color-accent),transparent_30%,var(--color-accent-2)_55%,transparent_80%,var(--color-accent))]"
+            />
+            <div aria-hidden className="absolute -inset-10 rounded-full bg-accent/10 blur-3xl" />
+
+            <img
+              src={profileImage}
+              alt="Portrait of Roshan Panthi"
+              className="relative h-full w-full rounded-full border-4 border-ink object-cover"
+            />
+
+            {floatingBadges.map(({ icon: Icon, label, color, className }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: [0, -10, 0] }}
+                transition={{
+                  opacity: { delay: 0.8 + i * 0.15, duration: 0.5 },
+                  y: { duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 },
+                }}
+                className={`absolute flex items-center gap-2 rounded-2xl border border-white/10 bg-surface/80 px-3.5 py-2 text-sm font-medium text-zinc-200 shadow-xl backdrop-blur-xl ${className}`}
+              >
+                <Icon className={`text-lg ${color}`} />
+                {label}
+              </motion.div>
+            ))}
+          </div>
+
+          <p className="mt-8 flex items-center justify-center gap-2 text-sm text-zinc-400">
+            <MapPin size={15} />
+            {profile.location}
+          </p>
+        </motion.div>
+
+        {/* DETAILS */}
+        <motion.div
+          variants={detailsContainer}
+          initial="hidden"
+          animate="show"
+          className="lg:col-start-1 lg:row-start-2 lg:self-start"
+        >
 
           <motion.p variants={item} className="mt-6 text-xl text-zinc-300 sm:text-2xl">
             <RotatingRole /> <span className="text-zinc-400">based in Nepal.</span>
@@ -160,49 +220,6 @@ function Hero() {
           </motion.dl>
         </motion.div>
 
-        {/* RIGHT */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[460px]"
-        >
-          <div className="relative aspect-square">
-            {/* Spinning gradient ring */}
-            <div
-              aria-hidden
-              className="absolute -inset-[3px] animate-spin-slow rounded-full bg-[conic-gradient(from_0deg,var(--color-accent),transparent_30%,var(--color-accent-2)_55%,transparent_80%,var(--color-accent))]"
-            />
-            <div aria-hidden className="absolute -inset-10 rounded-full bg-accent/10 blur-3xl" />
-
-            <img
-              src={profileImage}
-              alt="Portrait of Roshan Panthi"
-              className="relative h-full w-full rounded-full border-4 border-ink object-cover"
-            />
-
-            {floatingBadges.map(({ icon: Icon, label, color, className }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: [0, -10, 0] }}
-                transition={{
-                  opacity: { delay: 0.8 + i * 0.15, duration: 0.5 },
-                  y: { duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 },
-                }}
-                className={`absolute flex items-center gap-2 rounded-2xl border border-white/10 bg-surface/80 px-3.5 py-2 text-sm font-medium text-zinc-200 shadow-xl backdrop-blur-xl ${className}`}
-              >
-                <Icon className={`text-lg ${color}`} />
-                {label}
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="mt-8 flex items-center justify-center gap-2 text-sm text-zinc-400">
-            <MapPin size={15} />
-            {profile.location}
-          </p>
-        </motion.div>
       </div>
 
       <a
