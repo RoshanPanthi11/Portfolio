@@ -112,7 +112,7 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto mb-2 mt-10 w-full max-w-[240px] sm:max-w-[340px] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mb-0 lg:mt-0 lg:max-w-[460px] lg:self-center"
+          className="relative mx-auto mb-2 mt-10 w-full max-w-[240px] sm:max-w-[340px] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mb-0 lg:mt-6 lg:max-w-[480px] lg:self-start"
         >
           <div className="relative aspect-square">
             {/* Spinning gradient ring */}
